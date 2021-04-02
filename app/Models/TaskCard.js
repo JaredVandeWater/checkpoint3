@@ -1,9 +1,12 @@
+import { ProxyState } from "../AppState"
+
 export default class TaskCard {
-    constructor(title, totalTasks, tasksLeft, color) {
+    constructor(title, totalTasks, tasksLeft, color, cardId) {
         this.title = title
         this.totalTasks = totalTasks
         this.tasksLeft = tasksLeft
         this.color = color
+        this.cardId = cardId
     }
 
 
@@ -18,16 +21,7 @@ export default class TaskCard {
                     <p><span>${this.tasksLeft}</span> of <span>${this.totalTasks}</span> complete.</p>
                 </div>
                 <ul id="itemsHTML" class="list-group list-group-flush pl-3">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-
+                    ${this.TaskItems}
                 </ul>
                 <div class="card-body">
                     <div class='d-flex justify-content-center'>
@@ -45,4 +39,14 @@ export default class TaskCard {
         </div>
         `
     }
+
+
+    get TaskItems() {
+        let taskItems = ProxyState.taskItems.filter(i => i.taskItemId === this.cardId)
+        let template = ''
+        taskItems.forEach(i => template += i.Template)
+        return template
+
+    }
+
 }
