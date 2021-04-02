@@ -1,10 +1,12 @@
-import Value from "./Models/Value.js"
+import TaskCard from "./Models/TaskCard.js"
+import Task from "./Models/TaskCard.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
-  /** @type {Value[]} */
-  values = []
+  /** @type {Task[]} */
+  taskCards = []
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {

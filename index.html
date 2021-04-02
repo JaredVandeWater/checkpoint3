@@ -18,11 +18,38 @@
                 <img src="assets/img/logo.png" width="45" height="45" alt="" loading="lazy">
                 <span class="ml-2">checkpoint3</span>
             </a>
+
+
+            <form class='d-flex justify-content-center' onsubmit="app.taskCardsController.addTaskCard()">
+                <div class="pr-3">
+                    <input type="text" name="task title" id="title" class="form-control" minlength="3" maxlength="15"
+                        placeholder="Task Title..." required aria-describedby="helpId" required min="2" max="15">
+                </div>
+                <button type="submit" class="btn btn-primary">New Card</button>
+            </form>
+
+
         </nav>
     </header>
+
+
+
+
     <main>
-        <div id="app"></div>
+        <div class="container">
+            <div class='row' id="tasksHTML">
+            </div>
+        </div>
+
+
+
+
     </main>
+
+
+
+
+
     <footer class="container-fluid bg-dark text-light">
         <div class="row text-center">
             <div class="col">
