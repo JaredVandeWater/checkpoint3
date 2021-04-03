@@ -14,17 +14,22 @@ function _draw() {
 
     //check all task items in specific card
 
-    taskCards.forEach(v => {
-        v.totalTasks = ProxyState.taskItems.filter(i => i.cardId === v.id).length
+    taskCards.forEach(crd => {
+        let cardsTaskItems = ProxyState.taskItems.filter(itm => itm.cardId === crd.id)
+
+        crd.totalTasks = cardsTaskItems.length
+
+        crd.tasksDone = cardsTaskItems.filter(itmoncard => itmoncard.checked === true).length
 
 
-
-        template += v.Template
+        template += crd.Template
     })
     document.getElementById("tasksHTML").innerHTML = template
-
-
 }
+
+
+
+
 
 //Public
 export default class TaskCardsController {
@@ -51,7 +56,9 @@ export default class TaskCardsController {
         taskCardsService.deleteTaskCard(id)
 
     }
-
+    updateTasksDone(id) {
+        taskCardsService.updateTasksDone(id)
+    }
 
 
 }

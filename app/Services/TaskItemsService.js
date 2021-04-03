@@ -4,19 +4,20 @@ import { taskCardsService } from '../Services/TaskCardsService.js'
 
 class TaskItemsService {
     deleteTaskItem(id) {
-        //let cardId = ProxyState.taskItems.find(i => i.id === id).cardId
         ProxyState.taskItems = ProxyState.taskItems.filter(i => i.id != id)
-        //taskCardsService.updateTaskCounts(cardId)
         //saveState()
 
     }
     addTaskItem(newTaskItem) {
         ProxyState.taskItems.push(new TaskItem(newTaskItem.name, newTaskItem.cardId))
         //saveState()
-
-        //taskCardsService.updateTaskCounts(newTaskItem.cardId)
         ProxyState.taskItems = ProxyState.taskItems
+    }
 
+    updateTaskDone(checked, id) {
+        //we are trying to set our current task items this checked to the checked that is passed in. 
+        ProxyState.taskItems.find(i => i.id === id).checked = checked
+        ProxyState.taskItems = ProxyState.taskItems
 
     }
 

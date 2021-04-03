@@ -19,10 +19,11 @@ export default class TaskItemsController {
         form.reset()
     }
 
-
-
     deleteTaskItem(id) {
         taskItemsService.deleteTaskItem(id)
     }
 
+    updateTaskDone(checked, id) {
+        taskItemsService.updateTaskDone(checked, id)
+    }
 }

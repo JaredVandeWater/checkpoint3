@@ -10,11 +10,12 @@ class TaskCardsService {
         ProxyState.taskCards = [...ProxyState.taskCards, new TaskCard(newTaskCard.name,)]
         //saveState()
     }
-    updateTaskCounts(id) {
-        debugger
-        ProxyState.taskCards.find(c => c.id === id).totalTasks = ProxyState.taskItems.filter(i => i.cardId === id).length
-        //count task items based on id of the card
-        ProxyState.taskCards = ProxyState.taskCards
+
+    updateTasksDone(checked) {
+        //we need to grab the card, and all the items on that card
+        console.log(checked);
+
+
     }
 }
 
