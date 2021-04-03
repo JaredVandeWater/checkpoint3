@@ -45,7 +45,10 @@ export default class TaskCardsController {
     addTaskCard() {
         window.event.preventDefault()
         let form = window.event.target
-        let rawTask = { name: form['title'].value }
+        let rawTask = {
+            name: form['title'].value,
+            color: form['color'].value
+        }
 
         taskCardsService.addTaskCard(rawTask)
         //@ts-ignore

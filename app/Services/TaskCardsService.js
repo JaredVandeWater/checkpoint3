@@ -7,7 +7,7 @@ class TaskCardsService {
         //saveState()
     }
     addTaskCard(newTaskCard) {
-        ProxyState.taskCards = [...ProxyState.taskCards, new TaskCard(newTaskCard.name,)]
+        ProxyState.taskCards = [...ProxyState.taskCards, new TaskCard(newTaskCard.name, newTaskCard.color)]
         //saveState()
     }
 
