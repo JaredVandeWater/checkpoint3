@@ -15,6 +15,12 @@ export default class TaskCard {
     }
 
 
+
+
+
+
+
+
     get Template() {
         return /*html*/`
 <div class="col-md-4 col-lg-3 col-sm-6 pt-3 py-1">
