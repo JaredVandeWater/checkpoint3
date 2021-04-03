@@ -1,16 +1,15 @@
 import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/GenerateId.js"
 
-
+let mytotal = 0
 
 export default class TaskCard {
-    constructor(title, totalTasks, tasksLeft, color, id = generateId()) {
+    constructor(title, color, id = generateId()) {
         this.title = title
-        this.totalTasks = totalTasks
-        this.tasksLeft = tasksLeft
+        this.totalTasks = 0
+        this.tasksDone = 0
         this.color = color
         this.id = id
-
 
     }
 
@@ -25,7 +24,7 @@ export default class TaskCard {
                         onclick="app.taskCardsController.deleteTaskCard('${this.id}')"></i>
                     <h3 class="card-title">${this.title}
                     </h3>
-                    <p><span>${this.tasksLeft}</span> of <span>${this.totalTasks}</span> complete.</p>
+                    <p><span>${this.tasksDone}</span> of <span>${this.totalTasks}</span> complete.</p>
                 </div>
                 <ul id="itemsHTML" class="list-group list-group-flush pl-3">
                     ${this.TaskItems}
@@ -33,10 +32,10 @@ export default class TaskCard {
                 <div class="card-body">
                     <div class='d-flex justify-content-center'>
                         <form class='d-flex justify-content-center'
-                            onsubmit="app.taskItemsController.addTaskItem('${this.id}')">
+                            onsubmit="app.taskItemsController.addTaskItem('${this.id}',${this.totalTasks},${this.tasksDone})">
                             <div class="pr-3">
                                 <input type="text" name="taskTitle" id="taskItem" class="form-control" minlength="3"
-                                    maxlength="50" placeholder="New Item..." required aria-describedby="helpId" required
+                                    maxlength="50" placeholder="New Item..." required aria-described by="helpId" required
                                     min="2" max="15">
                             </div>
                             <button type="submit" class="btn btn-primary">+</button>
@@ -50,9 +49,13 @@ export default class TaskCard {
 
 
     get TaskItems() {
+
+
         let taskItems = ProxyState.taskItems.filter(i => i.itemId === this.id)
         let template = ''
         taskItems.forEach(i => template += i.Template)
+        console.log(this.totalTasks);
+        this.totalTasks = ProxyState.taskItems.length
         return template
 
 
