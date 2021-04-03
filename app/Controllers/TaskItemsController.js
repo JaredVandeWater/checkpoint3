@@ -6,15 +6,14 @@ import { taskItemsService } from "../Services/TaskItemsService.js";
 export default class TaskItemsController {
 
 
-    addTaskItem(taskItemId) {
+    addTaskItem(cardId) {
         window.event.preventDefault()
 
         let form = window.event.target
         let rawItem = {
             name: form['taskTitle'].value,
-            taskItemId: taskItemId
+            cardId: cardId
         }
-        console.log(taskItemId);
         taskItemsService.addTaskItem(rawItem)
         //@ts-ignore
         form.reset()

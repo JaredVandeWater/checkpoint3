@@ -9,8 +9,20 @@ function _draw() {
     if (taskCards.length == 0) {
         template += '<div class="col text-center"><p><em>No Tasks</em><p></div>'
     }
-    taskCards.forEach(v => template += v.Template)
+
+
+
+    //check all task items in specific card
+
+    taskCards.forEach(v => {
+        v.totalTasks = ProxyState.taskItems.filter(i => i.cardId === v.id).length
+
+
+
+        template += v.Template
+    })
     document.getElementById("tasksHTML").innerHTML = template
+
 
 }
 
@@ -20,6 +32,7 @@ export default class TaskCardsController {
 
         ProxyState.on("taskCards", _draw);
         ProxyState.on("taskItems", _draw);
+
 
         _draw()
     }
@@ -32,10 +45,13 @@ export default class TaskCardsController {
         taskCardsService.addTaskCard(rawTask)
         //@ts-ignore
         form.reset()
+
     }
     deleteTaskCard(id) {
         taskCardsService.deleteTaskCard(id)
+
     }
+
 
 
 }

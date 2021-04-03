@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/GenerateId.js"
 
-let mytotal = 0
+
 
 export default class TaskCard {
     constructor(title, color, id = generateId()) {
@@ -10,6 +10,7 @@ export default class TaskCard {
         this.tasksDone = 0
         this.color = color
         this.id = id
+
 
     }
 
@@ -49,13 +50,9 @@ export default class TaskCard {
 
 
     get TaskItems() {
-
-
-        let taskItems = ProxyState.taskItems.filter(i => i.itemId === this.id)
+        let taskItems = ProxyState.taskItems.filter(i => i.cardId === this.id)
         let template = ''
         taskItems.forEach(i => template += i.Template)
-        console.log(this.totalTasks);
-        this.totalTasks = ProxyState.taskItems.length
         return template
 
 
