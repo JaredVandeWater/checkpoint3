@@ -3,7 +3,7 @@ import TaskItem from "../Models/TaskItem.js";
 
 class TaskItemsService {
     deleteTaskItem(id) {
-        ProxyState.taskItems = ProxyState.taskItems.filter(i => i.taskItemId != id)
+        ProxyState.taskItems = ProxyState.taskItems.filter(i => i.id != id)
         //saveState()
 
     }

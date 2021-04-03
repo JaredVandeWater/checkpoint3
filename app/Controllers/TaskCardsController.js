@@ -16,7 +16,10 @@ function _draw() {
 //Public
 export default class TaskCardsController {
     constructor() {
+
         ProxyState.on("taskCards", _draw);
+        ProxyState.on("taskItems", _draw);
+
         _draw()
     }
 
@@ -29,5 +32,9 @@ export default class TaskCardsController {
         //@ts-ignore
         form.reset()
     }
+    deleteTaskCard(id) {
+        taskCardsService.deleteTaskCard(id)
+    }
+
 
 }

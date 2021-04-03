@@ -10,10 +10,10 @@ export default class TaskItemsController {
         window.event.preventDefault()
         let form = window.event.target
         let rawItem = {
-            name: form['name'].value,
+            name: form['taskTitle'].value,
             taskItemId: taskItemId
         }
-
+        console.log(taskItemId);
         taskItemsService.addTaskItem(rawItem)
         //@ts-ignore
         form.reset()

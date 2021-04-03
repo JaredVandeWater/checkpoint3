@@ -3,9 +3,10 @@ import { generateId } from "../Utils/GenerateId.js"
 
 
 export default class TaskItem {
-    constructor(name, taskItemId = generateId()) {
+    constructor(name, itemId, id = generateId()) {
         this.name = name
-        this.taskItemId = taskItemId
+        this.itemId = itemId
+        this.id = id
 
     }
 
