@@ -8,7 +8,7 @@ class AppState extends EventEmitter {
   taskCards = []
   /** @type {TaskItem[]} */
   taskItems = []
-
+  total = 0
 }
 
 export const ProxyState = new Proxy(new AppState(), {

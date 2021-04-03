@@ -10,7 +10,15 @@ class TaskItemsService {
     addTaskItem(newTaskItem) {
         ProxyState.taskItems.push(new TaskItem(newTaskItem.name, newTaskItem.taskItemId))
         //saveState()
+
+
         ProxyState.taskItems = ProxyState.taskItems
+
+
+    }
+
+    checkTaskItem() {
+
     }
 }
 

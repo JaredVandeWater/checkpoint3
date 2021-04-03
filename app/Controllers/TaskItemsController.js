@@ -8,6 +8,7 @@ export default class TaskItemsController {
 
     addTaskItem(taskItemId) {
         window.event.preventDefault()
+
         let form = window.event.target
         let rawItem = {
             name: form['taskTitle'].value,
@@ -21,7 +22,7 @@ export default class TaskItemsController {
 
 
 
-    deleteIngredient(id) {
+    deleteTaskItem(id) {
         taskItemsService.deleteTaskItem(id)
     }
 

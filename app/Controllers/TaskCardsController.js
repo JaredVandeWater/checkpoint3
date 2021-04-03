@@ -11,6 +11,7 @@ function _draw() {
     }
     taskCards.forEach(v => template += v.Template)
     document.getElementById("tasksHTML").innerHTML = template
+
 }
 
 //Public
