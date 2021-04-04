@@ -3,9 +3,39 @@ import TaskItem from "../Models/TaskItem.js";
 import { saveState } from "../Utils/LocalStorage.js";
 
 class TaskItemsService {
+
+
     deleteTaskItem(id) {
-        ProxyState.taskItems = ProxyState.taskItems.filter(i => i.id != id)
-        saveState()
+        //@ts-ignore
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-info'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Delete Task?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Keep',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                ProxyState.taskItems = ProxyState.taskItems.filter(i => i.id != id)
+                saveState()
+
+            } else if (
+                /* Read more about handling dismissals below */
+                //@ts-ignore
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+
+            }
+        })
 
     }
     addTaskItem(newTaskItem) {
