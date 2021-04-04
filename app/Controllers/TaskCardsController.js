@@ -1,6 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { taskCardsService } from "../Services/TaskCardsService.js";
-
+import { loadState } from "../Utils/LocalStorage.js";
 
 //Private
 function _draw() {
@@ -38,7 +38,7 @@ export default class TaskCardsController {
         ProxyState.on("taskCards", _draw);
         ProxyState.on("taskItems", _draw);
 
-
+        loadState()
         _draw()
     }
 
@@ -58,9 +58,6 @@ export default class TaskCardsController {
     deleteTaskCard(id) {
         taskCardsService.deleteTaskCard(id)
 
-    }
-    updateTasksDone(id) {
-        taskCardsService.updateTasksDone(id)
     }
 
 

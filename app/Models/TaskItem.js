@@ -3,11 +3,11 @@ import { generateId } from "../Utils/GenerateId.js"
 
 
 export default class TaskItem {
-    constructor(name, cardId, id = generateId()) {
+    constructor(name, cardId, id = generateId(), checked = false) {
         this.name = name
         this.cardId = cardId
         this.id = id
-        this.checked = false
+        this.checked = checked
     }
 
 
